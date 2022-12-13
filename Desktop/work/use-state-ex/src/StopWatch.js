@@ -3,12 +3,12 @@ import React, {useState} from "react";
 function StopWatch() {
   const [num, setNum] = useState(0);
 
-  const timeoutId = setTimeout(() => setNum(num + 1), 1000);
+  let timeoutId = setTimeout(() => setNum(num + 1), 1000);
 
   const pause = () => clearTimeout(timeoutId);
 
   const resume = () => {
-    setTimeout(() => setNum(num + 1), 1000);
+    timeoutId = setTimeout(() => setNum(num + 1), 1000);
   }
   return (
   <>
