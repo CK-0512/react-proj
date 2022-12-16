@@ -8,11 +8,43 @@ function App() {
     {/* < StopWatch /> */}
     {/* < NumberCounter /> */}
     {/* < Popup /> */}
-    <div style={{display : "inline-flex", flexDirection : "column", gap : "10px"}}>
-      <img src="https://picsum.photos/id/201/400/400"/>
-      <div style={{textAlign: "center"}}>MAC OS</div>
-      <div style={{textAlign: "center"}}>4,340,000</div>
-    </div>
+    <div style={{display:'flex', gap:'10px'}}>
+        <div
+          style={{
+            display: "inline-flex",
+              flexDirection: "column",
+                gap: "10px",
+          }}
+          >
+          <img src="https://picsum.photos/id/201/400/400" />
+          <div style={{textAlign:'center'}}>MAC BOOK AIR</div>
+          <div style={{textAlign:'center'}}>4,340,000</div>
+        </div>
+
+        <div
+          style={{
+            display: "inline-flex",
+              flexDirection: "column",
+                gap: "10px",
+          }}
+          >
+          <img src="https://picsum.photos/id/1/400/400" />
+          <div style={{textAlign:'center'}}>MAC BOOK PRO</div>
+          <div style={{textAlign:'center'}}>4,340,000</div>
+        </div>
+
+        <div
+          style={{
+            display: "inline-flex",
+              flexDirection: "column",
+                gap: "10px",
+          }}
+          >
+          <img src="https://picsum.photos/id/2/400/400" />
+          <div style={{textAlign:'center'}}>MAC BOOK PRO PLUS</div>
+          <div style={{textAlign:'center'}}>4,340,000</div>
+        </div>
+      </div>
     </>
   );
 }
