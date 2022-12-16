@@ -1,9 +1,9 @@
 import React, {useState} from "react";
 
 function ProductListItem(props) {
-  const imNo = props.imNo;
-  const productName = props.productName;
-  const productPriceFormated = props.productPriceFormated;
+
+  const {imNo, productName, productPriceFormated} = props;
+
   return (
   <>
   <div
