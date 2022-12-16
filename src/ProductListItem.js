@@ -1,9 +1,9 @@
 import React, {useState} from "react";
 
-function ProductListItem() {
-  const imNo = 1;
-  const productName = "MAC BOOK AIR";
-  const productPriceFormated = "4,340,000원";
+function ProductListItem(props) {
+  const imNo = props.imNo;
+  const productName = props.productName;
+  const productPriceFormated = props.productPriceFormated;
   return (
   <>
   <div
