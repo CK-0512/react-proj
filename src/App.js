@@ -17,7 +17,7 @@ function App() {
           }}
           >
           <img src="https://picsum.photos/id/201/400/400" />
-          <div style={{textAlign:'center'}}>MAC BOOK AIR</div>
+          <div style={{textAlign:'center', fontWeight:'bold', color:'#454545'}}>MAC BOOK AIR</div>
           <div style={{textAlign:'center'}}>4,340,000</div>
         </div>
 
@@ -29,7 +29,7 @@ function App() {
           }}
           >
           <img src="https://picsum.photos/id/1/400/400" />
-          <div style={{textAlign:'center'}}>MAC BOOK PRO</div>
+          <div style={{textAlign:'center', fontWeight:'bold', color:'#454545'}}>MAC BOOK PRO</div>
           <div style={{textAlign:'center'}}>4,340,000</div>
         </div>
 
@@ -41,7 +41,7 @@ function App() {
           }}
           >
           <img src="https://picsum.photos/id/2/400/400" />
-          <div style={{textAlign:'center'}}>MAC BOOK PRO PLUS</div>
+          <div style={{textAlign:'center', fontWeight:'bold', color:'#454545'}}>MAC BOOK PRO PLUS</div>
           <div style={{textAlign:'center'}}>4,340,000</div>
         </div>
       </div>
