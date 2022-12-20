@@ -4,7 +4,7 @@ function NoRecord() {
     const [no, setNo] = useState('');
     const [recordNos, setRecordNos] = useState([10, 20, 30]);
 
-    const saveNo = () => {
+    const saveNo = (e) => {
         if ( no === '') {
             alert('숫자를 입력해주세요.')
             return;
@@ -17,11 +17,16 @@ function NoRecord() {
     return (
         <>
             <h1>숫자기록</h1>
-            <input type="number" 
-            value={no} 
-            onChange={(e) => setNo(e.target.valueAsNumber)} 
-            className="input w-full max-w-xs"/>
-            <button type="button" onClick={saveNo} className="btn">
+            <form onSubmit={(e) => {
+                e.preventDefault(); 
+                saveNo()}}>
+                    
+                <input type="number" 
+                    value={no} 
+                    onChange={(e) => setNo(e.target.valueAsNumber)} 
+                    className="input w-full max-w-xs"/>
+            </form>
+            <button type="submit" className="btn">
                 기록
             </button>
 
