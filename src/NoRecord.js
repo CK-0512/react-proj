@@ -1,11 +1,16 @@
 import React, { useState } from "react";
 
 function NoRecord() {
-    const [no, setNo] = useState(0);
+    const [no, setNo] = useState('');
     const [recordNos, setRecordNos] = useState([10, 20, 30]);
 
     const saveNo = () => {
+        if ( no === '') {
+            alert('숫자를 입력해주세요.')
+            return;
+        }
         setRecordNos([...recordNos, no]);
+        setNo("");
     }
 
     const li = recordNos.map((el, index) => <li key={index}>- {el}</li>)
