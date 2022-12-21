@@ -14,8 +14,8 @@ function App() {
     {/* < NumberCounter /> */}
     {/* < Popup /> */}
     {/* <ProdList className="container mx-auto"/> */}
-    {/* <NoRecord /> */}
-    <FormEx />
+    <NoRecord />
+    {/* <FormEx /> */}
     </>
   );
 }
