@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useMemo } from "react";
 
 import "./App.css";
 
@@ -39,8 +39,9 @@ function App() {
   console.log(`AppCallCount : ${AppCallCount}`);
 
   const [inputNo, setInputNo] = useState(0);
+  const [no, setNo] = useState(0);
 
-  const primeNumbersCount = getPrimeNumbersCount(inputNo);
+  const primeNumbersCount = useMemo(() => getPrimeNumbersCount(inputNo), [inputNo]);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -63,6 +64,7 @@ function App() {
 
   return (
     <>
+    <button onClick={() => setNo(no + 1)}>번호 : {no}</button>
       <form onSubmit={onSubmit}>
         <input type={"number"} name="number" placeholder="숫자를 입력해주세요."/>
         <input type={"submit"} value="확인" />
