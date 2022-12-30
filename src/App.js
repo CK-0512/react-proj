@@ -32,8 +32,15 @@ function getPrimeNumbersCount(max) {
   return getPrimeNumbers(max).length;
 }
 
+let AppCallCount;
+
 function App() {
-  const [primeNumbersCount, setPrimeNumbersCount] = useState(0);
+  AppCallCount++;
+  console.log(`AppCallCount : ${AppCallCount}`);
+
+  const [inputNo, setInputNo] = useState(0);
+
+  const primeNumbersCount = getPrimeNumbersCount(inputNo);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -43,7 +50,7 @@ function App() {
     form.number.value = form.number.value.trim();
 
     if (form.number.value.length == 0) {
-      alert('숫자를 입력해주세요.')
+      alert('숫자를 입력해주세요.');
       form.number.focus();
       return;
     }
@@ -51,9 +58,7 @@ function App() {
     const number = form.number.valueAsNumber;
     form.number.focus();
 
-    const primeNumbersCount = getPrimeNumbersCount(number);
-    setPrimeNumbersCount(primeNumbersCount);
-
+    setInputNo(number);
   }
 
   return (
@@ -62,6 +67,7 @@ function App() {
         <input type={"number"} name="number" placeholder="숫자를 입력해주세요."/>
         <input type={"submit"} value="확인" />
         <hr />
+        <div>MAX : {inputNo}</div>
         <div>소수의 개수 : {primeNumbersCount}</div>
       </form>
     </>
