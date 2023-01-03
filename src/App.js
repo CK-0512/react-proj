@@ -1,74 +1,44 @@
-import React, { useState, useEffect, useRef, useMemo } from "react";
+import React, { useState, useEffect, useRef, useMemo, useCallback } from "react";
 
 import "./App.css";
 
-function isPrimeNumber(no) {
-  for ( let i = 2; i < no; i++ ) {
-    if ( i * i > no ) {
-      break;
-    }
-    
-    if ( no % i == 0 ) {
-      return false;
-    }
-  }
+let SubCallCount = 0;
+function Sub({no1, no2, calculateFunc}) {
+  SubCallCount++;
+  console.log(`SubCallCount : ${SubCallCount}`);
   
-  return true;
+  return(
+  <>
+    <div style={{border : '10px solid red', padding : 10}}>
+      입력: {no1}, {no2}
+      <br/>
+      결과 : {calculateFunc(no1, no2)}
+      </div>
+  </>
+  )
 }
-
-function getPrimeNumbers(max) {
-  const primeNumbers = [];
-  
-  for ( let i = 2; i <= max; i++ ){
-    if ( isPrimeNumber(i) ) {
-      primeNumbers.push(i);
-    }
-  }
-  
-  return primeNumbers;
-}
-
-function getPrimeNumbersCount(max) {
-  return getPrimeNumbers(max).length;
-}
-
-let PrimeNosCountCallCount = 0;
-
-function PrimeNosCount( {max} ) {
-  PrimeNosCountCallCount++;
-  console.log(`PrimeNosCountCallCount : ${PrimeNosCountCallCount}`);
-
-  const count = getPrimeNumbersCount(max);
-  return (
-  <div style={{border : "10px solid black", padding : 100}}>
-    1부터 {max} 사이에 존재하는 소수의 개수는 : {count}
-    </div>
-  );
-}
-
-const MemoisedPrimeNosCount = React.memo(PrimeNosCount);
 
 let AppCallCount = 0;
+
+const MemoisedSub = React.memo(Sub);
 
 function App() {
   AppCallCount++;
   console.log(`AppCallCount : ${AppCallCount}`);
 
-  const [no, setNo] = useState(0);
+  const [no1, setNo1] = useState(0);
+  const [no2, setNo2] = useState(0);
+
+
+  const calculateFunc = useCallback((a, b) => a + b + no1, [no1]);
 
   return (
     <>
-      <MemoisedPrimeNosCount max={100}/>
-      <hr />
-      <MemoisedPrimeNosCount max={200}/>
-      <hr />
-      <MemoisedPrimeNosCount max={300}/>
-      <hr />
-      <MemoisedPrimeNosCount max={1000000}/>
-      <hr />
-      <button onClick={() => setNo(no + 1)}>버튼 : {no}</button>
-      <hr />
-      <MemoisedPrimeNosCount max={no} />
+     <div>안녕하세요.</div>
+     <button onClick={() => setNo1(no1 + 1)}>버튼 : {no1}</button>
+     <hr/>
+     <button onClick={() => setNo2(no2 + 1)}>버튼 : {no2}</button>
+     <MemoisedSub no1={10} no2={20} calculateFunc={calculateFunc}/>
     </>
   );
 }
