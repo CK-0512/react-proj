@@ -23,21 +23,63 @@ function OrderOptions({selectedCount, options, toggleAllChecked, btnAllChecked, 
   return(
   <>
   <h2>옵션 ({selectedCount} / {options.length})</h2>
-    <span onClick={toggleAllChecked} style={{userSelect: 'none', cursor: 'pointer'}}>
-      {btnAllChecked ? "[v]" : "[]"} 전체선택
-    </span>
+    <label style={{paddingLeft: 30, userSelect:"none", cursor:"pointer"}}>
+      <input 
+        type="checkbox" 
+        checked={btnAllChecked}
+        onChange={toggleAllChecked} 
+      />
+      전체선택
+    </label>
     <ul>
       {options.map((option, index) => (
         <li key={option} style={{userSelect: 'none', cursor: 'pointer'}}
         onClick={() => toggleOptionCheck(index)}>
-          {checkedOption[index] ? "[v] " : "[] "}
-          {option}
+          <label>
+            <input 
+              type="checkbox" 
+              checked={checkedOption[index]} 
+              onChange={() => toggleOptionCheck(index)} 
+            />
+            {option}
+          </label>
         </li>
       ))}
     </ul>
   </>
   )
 }
+
+const MemoizedOrderOptions = React.memo(OrderOptions);
+
+function OrderDelivery({deliveryType ,setDeliveryType}) {
+  console.log('OrderDelivery 실행됨');
+
+  return <>
+  <h2>배달옵션</h2>
+  <label>
+    <input 
+      type="radio" 
+      name="delivery-type" 
+      checked={deliveryType == '직접수령'} 
+      onChange={() => setDeliveryType('직접수령')}
+    />
+    직접수령
+  </label>
+
+  <label>
+    <input 
+      type="radio" 
+      name="delivery-type" 
+      checked={deliveryType == '배달'} 
+      onChange={() => setDeliveryType('배달')}
+    />
+    배달
+  </label>
+  </>
+}
+
+const MemoizedOrderDelivery = React.memo(OrderDelivery);
 
 function Order() {
   
@@ -79,6 +121,8 @@ function Order() {
     }
   }
 
+  const [deliveryType, setDeliveryType] = useState('직접수령');
+
   return (
     <>
     <h1>음식주문</h1>
@@ -94,6 +138,13 @@ function Order() {
         btnAllChecked={btnAllChecked}
         toggleOptionCheck={toggleOptionCheck}
       />
+      <MemoizedOrderDelivery
+        deliveryType ={deliveryType}
+        setDeliveryType ={setDeliveryType} />
+      <hr />
+      <div>
+        현재 주문 방법: {deliveryType}
+      </div>
     </>
   );
 }
