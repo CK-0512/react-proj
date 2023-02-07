@@ -15,8 +15,8 @@ import {
 } from '@mui/material';
 import classnames from "classnames"
 import { atom, useRecoilState } from "recoil";
-import RecoilEx from "./RecoilEx";
 import { recoilPersist } from "recoil-persist";
+import RouterEx from "./RouterEx";
 
 const { persistAtom: persistAtomTodos } = recoilPersist({
   key: "persistAtomTodos"
@@ -448,7 +448,7 @@ function NoticeSnackBar() {
 function App() {
   return (
     <>
-      <AppBar position="static">
+      {/* <AppBar position="static">
         <Toolbar>
           <div className="flex-1"></div>
           <div className="font-bold">NOTEPAD</div>
@@ -457,8 +457,8 @@ function App() {
       </AppBar>
       <NoticeSnackBar />
       <NewTodoForm />
-      <TodoList />
-      {/* <RecoilEx /> */}
+      <TodoList /> */}
+      <RouterEx />
     </>
   );
 }
